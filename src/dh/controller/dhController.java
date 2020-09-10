@@ -40,14 +40,25 @@ public class dhController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("inside dhcontroller " + request.getParameter("strGain") );
-		System.out.println("inside dhcontroller " + request.getParameter("agiGain") );
-		float x = Float.parseFloat(request.getParameter("agiGain")) + Float.parseFloat(request.getParameter("strGain"));
-		System.out.println(x);
+		
 		Hero hero = new Hero();
 		
-		hero.setHeroName(request.getParameter("hname"));
+		hero.setHeroName(request.getParameter("heroName"));
+		hero.setAtkType(request.getParameter("atkType"));
+		hero.setMainStats(request.getParameter("mainStats"));
 		
+		hero.setBaseHP(Integer.parseInt(request.getParameter("baseHP")));
+		hero.setBaseMP(Integer.parseInt(request.getParameter("baseMP")));
+		hero.setBaseAtk(Integer.parseInt(request.getParameter("baseAtk")));
+		hero.setBaseArmor(Integer.parseInt(request.getParameter("baseArmor")));
+		hero.setBaseMS(Integer.parseInt(request.getParameter("baseMS")));
+		hero.setBaseStr(Integer.parseInt(request.getParameter("baseStr")));
+		hero.setBaseAgi(Integer.parseInt(request.getParameter("baseAgi")));
+		hero.setBaseInt(Integer.parseInt(request.getParameter("baseInt")));
+		
+		hero.setGainStr(Float.parseFloat(request.getParameter("gainStr")));
+		hero.setGainAgi(Float.parseFloat(request.getParameter("gainAgi")));
+		hero.setGainInt(Float.parseFloat(request.getParameter("gainInt")));
 		
 //		try {
 //			heroDao.addHero(hero);

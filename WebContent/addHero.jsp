@@ -32,6 +32,9 @@
 		<input type="number" step="5" name="baseMP" 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 	
+		Attack:
+		<input type="number" step="1" name="baseAtk" required="required"> <br>
+		
 		Armor:
 		<input type="number" step="1" name="baseArmor" required="required"> <br>
 	
@@ -54,15 +57,15 @@
 		<b>Stats Gain Per Level:</b><br>
 		
 		Strength:
-		<input type="number" step="0.1" name="strGain" 
+		<input type="number" step="0.1" name="gainStr" 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 			
 		Agility:
-		<input type="number" step="0.1" name="agiGain" 
+		<input type="number" step="0.1" name="gainAgi" 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 			
 		Intelligent:
-		<input type="number" step="0.1" name="intGain" 
+		<input type="number" step="0.1" name="gainInt" 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 	
 		<input type="submit" name="Submit" value="Add Hero"/>

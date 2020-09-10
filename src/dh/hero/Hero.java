@@ -1,12 +1,33 @@
 package dh.hero;
 
 public class Hero {
+	/*
+	 create table herolist(
+		id int AUTO_INCREMENT,
+	    hero_name varchar(30),
+	    atk_type varchar(10),
+	    main_stats varchar(15),
+	    base_hp int,
+	    base_mp int,
+	    base_armor int,
+	    base_atk int,
+	    base_ms int,
+	    base_str int,
+	    gain_str DECIMAL(2,1),
+	    base_agi int,
+	    gain_agi DECIMAL(2,1),
+	    base_int int,
+	    gain_int DECIMAL(2,1),
+	    PRIMARY KEY(id)
+	);
+	 */
 	
 	private String heroName;
 	private String atkType;
 	private String mainStats;
 	private int baseHP;
 	private int baseMP;
+	private int baseAtk;
 	private int baseArmor;
 	private int baseMS;
 	private int baseStr;
@@ -45,6 +66,12 @@ public class Hero {
 	}
 	public void setBaseMP(int baseMP) {
 		this.baseMP = baseMP;
+	}
+	public int getBaseAtk() {
+		return baseAtk;
+	}
+	public void setBaseAtk(int baseAtk) {
+		this.baseAtk = baseAtk;
 	}
 	public int getBaseArmor() {
 		return baseArmor;
@@ -94,6 +121,7 @@ public class Hero {
 	public void setGainInt(float gainInt) {
 		this.gainInt = gainInt;
 	}
+
 	
 	
 }
