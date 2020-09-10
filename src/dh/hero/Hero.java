@@ -9,15 +9,17 @@ public class Hero {
 	    main_stats varchar(15),
 	    base_hp int,
 	    base_mp int,
-	    base_armor int,
 	    base_atk int,
+	    base_armor int,
 	    base_ms int,
 	    base_str int,
 	    gain_str DECIMAL(2,1),
 	    base_agi int,
-	    gain_agi DECIMAL(2,1),
+	    
 	    base_int int,
 	    gain_int DECIMAL(2,1),
+	    gain_str DECIMAL(2,1),
+	    gain_agi DECIMAL(2,1),wsxdq cdcdcdv dth
 	    PRIMARY KEY(id)
 	);
 	 */
