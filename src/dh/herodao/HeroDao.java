@@ -21,7 +21,20 @@ public class HeroDao {
 		
 		PreparedStatement ps = con.prepareStatement(query);
 		ps.setString(1, hero.getHeroName());
-		
+		ps.setString(2, hero.getAtkType());
+		ps.setString(3, hero.getMainStats());
+		ps.setInt(4, hero.getBaseHP());
+		ps.setInt(5, hero.getBaseMP());
+		ps.setInt(6,hero.getBaseAtk());
+		ps.setInt(7, hero.getBaseArmor());
+		ps.setInt(8, hero.getBaseMS());
+		ps.setInt(9, hero.getBaseStr());
+		ps.setInt(10, hero.getBaseAgi());
+		ps.setInt(11, hero.getBaseInt());
+		ps.setFloat(12, hero.getGainStr());
+		ps.setFloat(13, hero.getBaseAgi());
+		ps.setFloat(14, hero.getGainInt());
+		ps.executeUpdate();
 
 	}
 }

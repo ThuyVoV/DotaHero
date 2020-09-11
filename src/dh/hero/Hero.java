@@ -13,13 +13,11 @@ public class Hero {
 	    base_armor int,
 	    base_ms int,
 	    base_str int,
-	    gain_str DECIMAL(2,1),
 	    base_agi int,
-	    
 	    base_int int,
-	    gain_int DECIMAL(2,1),
 	    gain_str DECIMAL(2,1),
-	    gain_agi DECIMAL(2,1),wsxdq cdcdcdv dth
+	    gain_agi DECIMAL(2,1),
+	    gain_int DECIMAL(2,1),
 	    PRIMARY KEY(id)
 	);
 	 */

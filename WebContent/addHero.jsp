@@ -29,7 +29,7 @@
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 	
 		MP:
-		<input type="number" step="5" name="baseMP" 
+		<input type="number" step="any" name="baseMP" 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 	
 		Attack:
