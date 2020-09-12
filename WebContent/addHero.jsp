@@ -39,7 +39,7 @@
 		<input type="number" step="1" name="baseArmor" required="required"> <br>
 	
 		Movement Speed:
-		<input type="number" step="5" name="baseMS" value="100" 
+		<input type="number" step="any" name="baseMS" value="100" 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 			
 		Strength:
@@ -57,15 +57,15 @@
 		<b>Stats Gain Per Level:</b><br>
 		
 		Strength:
-		<input type="number" step="0.1" name="gainStr" 
+		<input type="number" step="0.1" name="gainStr" max="99.9" 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 			
 		Agility:
-		<input type="number" step="0.1" name="gainAgi" 
+		<input type="number" step="0.1" name="gainAgi" max="99.9" 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 			
 		Intelligent:
-		<input type="number" step="0.1" name="gainInt" 
+		<input type="number" step="0.1" name="gainInt" max="99.9" 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 	
 		<input type="submit" name="Submit" value="Add Hero"/>

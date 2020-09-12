@@ -77,15 +77,15 @@ public class dhController extends HttpServlet {
 		System.out.println("gagi: " +request.getParameter("gainAgi"));
 		System.out.println("gint: " +request.getParameter("gainInt"));
 		
-//		try {
-//			heroDao.addHero(hero);
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			heroDao.addHero(hero);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		response.sendRedirect("addHero.jsp");
 	}
