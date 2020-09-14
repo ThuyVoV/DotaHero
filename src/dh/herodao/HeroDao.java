@@ -36,8 +36,6 @@ public class HeroDao {
 		ps.setFloat(14, hero.getGainInt());
 		ps.executeUpdate();
 		
-		con.close();
-		ps.close();
 
 	}
 }

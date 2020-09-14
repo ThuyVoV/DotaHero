@@ -15,15 +15,15 @@ import dh.herodao.HeroDao;
 /**
  * Servlet implementation class dhController
  */
-@WebServlet("/dhController")
-public class dhController extends HttpServlet {
+@WebServlet("/AddHeroController")
+public class AddHeroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private HeroDao heroDao = new HeroDao();
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public dhController() {
+    public AddHeroController() {
         super();
         // TODO Auto-generated constructor stub
     }

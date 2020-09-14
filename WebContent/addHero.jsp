@@ -7,20 +7,20 @@
 <title>Add Hero</title>
 </head>
 <body>
-	<form method="POST" action="dhController">
+	<form method="POST" action="AddHeroController">
 	
 
 		<b>Enter Hero Name:</b>
-		<input type="text" name="heroName" required="required"> <br><br>
+		<input type="text" name="heroName" required="required"> <br>
 
 		<b>Attack Type:</b>
 		<input type="radio" name="atkType" value = "Melee" required="required"> Melee
-		<input type="radio" name="atkType" value = "Range"> Range <br><br>
+		<input type="radio" name="atkType" value = "Range"> Range <br>
 		
 		<b>Primary Attribute:</b>
 		<input type="radio" name="mainStats" value = "Strength" required="required"> Strength
 		<input type="radio" name="mainStats" value = "Agility"> Agility
-		<input type="radio" name="mainStats" value = "Intelligent"> Intelligent <br><br>
+		<input type="radio" name="mainStats" value = "Intelligent"> Intelligent <br>
 		
 		<b>Base Stats:</b><br>
 		
@@ -68,8 +68,8 @@
 		<input type="number" step="0.1" name="gainInt" max="99.9" 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 	
-		<input type="submit" name="Submit" value="Add Hero"/>
-
+		<input type="submit" name="Submit" value="Add Hero"/> <br><br>
+		<button type="button"><a href="ViewHeroController">view Hero</a></button>
 	</form>
 </body>
 </html>
