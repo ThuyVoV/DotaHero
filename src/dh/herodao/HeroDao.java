@@ -17,9 +17,10 @@ public class HeroDao {
 		String url="jdbc:mysql://localhost:3306/dotahero?serverTimezone=UTC";
 		String uname="root";
 		String pass="yogi420tea";
-		Connection con = DriverManager.getConnection(url,uname,pass);
 		
+		Connection con = DriverManager.getConnection(url,uname,pass);
 		PreparedStatement ps = con.prepareStatement(query);
+		
 		ps.setString(1, hero.getHeroName());
 		ps.setString(2, hero.getAtkType());
 		ps.setString(3, hero.getMainStats());
