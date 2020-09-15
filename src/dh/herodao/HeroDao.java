@@ -5,6 +5,26 @@ import java.sql.*;
 
 public class HeroDao {
 	
+	Connection con = null;
+	
+	public HeroDao() {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			String url="jdbc:mysql://localhost:3306/dotahero?serverTimezone=UTC";
+			String uname="root";
+			String pass="yogi420tea";
+			
+			con = DriverManager.getConnection(url,uname,pass);
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void addHero(Hero hero) throws ClassNotFoundException, SQLException{
 		
 		String query = "INSERT INTO "+ "herolist(hero_name, atk_type, main_stats, "
@@ -12,13 +32,7 @@ public class HeroDao {
 				+ "base_str, base_agi, base_int, gain_str, gain_agi, gain_int) "
 				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		
-		Class.forName("com.mysql.cj.jdbc.Driver");
-		
-		String url="jdbc:mysql://localhost:3306/dotahero?serverTimezone=UTC";
-		String uname="root";
-		String pass="yogi420tea";
-		
-		Connection con = DriverManager.getConnection(url,uname,pass);
+	
 		PreparedStatement ps = con.prepareStatement(query);
 		
 		ps.setString(1, hero.getHeroName());
@@ -36,7 +50,14 @@ public class HeroDao {
 		ps.setFloat(13, hero.getBaseAgi());
 		ps.setFloat(14, hero.getGainInt());
 		ps.executeUpdate();
-		
 
+	}
+	
+	public void removeHero() {
+		
+	}
+	
+	public void viewHero() {
+		
 	}
 }
