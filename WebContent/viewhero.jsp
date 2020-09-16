@@ -7,6 +7,6 @@
 <title>view hero</title>
 </head>
 <body>
- view hero test
+ 	inside viewhero.jsp view hero test
 </body>
 </html>
