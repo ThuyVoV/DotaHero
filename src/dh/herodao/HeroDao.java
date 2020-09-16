@@ -2,10 +2,14 @@ package dh.herodao;
 
 import dh.hero.Hero;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HeroDao {
 	
 	Connection con = null;
+	PreparedStatement ps= null;
+	Statement st = null;
 	
 	public HeroDao() {
 		try {
@@ -33,7 +37,7 @@ public class HeroDao {
 				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		
 	
-		PreparedStatement ps = con.prepareStatement(query);
+		ps = con.prepareStatement(query);
 		
 		ps.setString(1, hero.getHeroName());
 		ps.setString(2, hero.getAtkType());
@@ -50,14 +54,39 @@ public class HeroDao {
 		ps.setFloat(13, hero.getBaseAgi());
 		ps.setFloat(14, hero.getGainInt());
 		ps.executeUpdate();
-
+		
+		close();
 	}
 	
 	public void removeHero() {
+	
+	}
+	
+	public List<Hero> viewHero() {
+		List<Hero> hl = new ArrayList<Hero>();
+		
+		
+		close();
+		return hl;
 		
 	}
 	
-	public void viewHero() {
+	//closes connections
+	public void close() {
 		
+		try {
+			if(con!=null)
+				con.close();
+			
+			if(ps!=null)
+				ps.close();
+			
+			if(st!=null)
+				st.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
