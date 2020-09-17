@@ -65,9 +65,22 @@ public class HeroDao {
 		List<Hero> hl = new ArrayList<Hero>();
 		String deleteQuery = "SELECT * FROM herolist";
 		
+		
 		try{
 			ps = con.prepareStatement(deleteQuery);
+			rs = ps.executeQuery();
 			
+			while (rs.next()) {
+				Hero hero = new Hero();
+				
+				hero.setHeroName(rs.getString("hero_name"));
+				hero.setAtkType(rs.getString("atk_type"));
+				hero.setMainStats(rs.getString("main_stats"));
+				
+				System.out.println(hero.getHeroName()+" "+hero.getAtkType()+" "+hero.getMainStats());
+				
+				hl.add(hero);
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -80,7 +93,6 @@ public class HeroDao {
 	
 	//closes connections
 	public void close() {
-		
 		try {
 			if(con!=null) con.close();
 			

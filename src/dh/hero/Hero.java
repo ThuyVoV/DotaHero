@@ -37,6 +37,27 @@ public class Hero {
 	private int baseInt;
 	private float gainInt;
 	
+	public Hero() {}
+	
+	public Hero(String heroName, String atkType, String mainStats, int baseHP, int baseMP, int baseAtk, int baseArmor,
+			int baseMS, int baseStr, float gainStr, int baseAgi, float gainAgi, int baseInt, float gainInt) {
+
+		this.heroName = heroName;
+		this.atkType = atkType;
+		this.mainStats = mainStats;
+		this.baseHP = baseHP;
+		this.baseMP = baseMP;
+		this.baseAtk = baseAtk;
+		this.baseArmor = baseArmor;
+		this.baseMS = baseMS;
+		this.baseStr = baseStr;
+		this.gainStr = gainStr;
+		this.baseAgi = baseAgi;
+		this.gainAgi = gainAgi;
+		this.baseInt = baseInt;
+		this.gainInt = gainInt;
+	}
+	
 	public String getHeroName() {
 		return heroName;
 	}

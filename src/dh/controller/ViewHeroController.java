@@ -28,6 +28,10 @@ public class ViewHeroController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Hero> hl = heroDao.viewHero();
 		
+		for(Hero h: hl) {
+			System.out.println(h.getHeroName());
+		}
+		
 		HttpSession sess = request.getSession();
 		sess.setAttribute("heroList", hl);
 		
@@ -35,7 +39,7 @@ public class ViewHeroController extends HttpServlet {
 		rd.forward(request, response);
 		
 
-		System.out.println("I'm in here, VHC doGet");
+		System.out.println("\nI'm in here, VHC doGet");
 	}
 
 }
