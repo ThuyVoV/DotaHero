@@ -35,7 +35,7 @@ public class ViewHeroController extends HttpServlet {
 		rd.forward(request, response);
 		
 
-		System.out.println("I'm in here");
+		System.out.println("I'm in here, VHC doGet");
 	}
 
 }

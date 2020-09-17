@@ -10,6 +10,7 @@ public class HeroDao {
 	Connection con = null;
 	PreparedStatement ps= null;
 	Statement st = null;
+	ResultSet rs = null;
 	
 	public HeroDao() {
 		try {
@@ -21,7 +22,6 @@ public class HeroDao {
 			con = DriverManager.getConnection(url,uname,pass);
 			
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		catch (SQLException e) {
@@ -31,13 +31,12 @@ public class HeroDao {
 	
 	public void addHero(Hero hero) throws ClassNotFoundException, SQLException{
 		
-		String query = "INSERT INTO "+ "herolist(hero_name, atk_type, main_stats, "
+		String addQuery = "INSERT INTO " + "herolist(hero_name, atk_type, main_stats, "
 				+ "base_hp, base_mp, base_atk, base_armor, base_ms, "
 				+ "base_str, base_agi, base_int, gain_str, gain_agi, gain_int) "
 				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		
-	
-		ps = con.prepareStatement(query);
+		ps = con.prepareStatement(addQuery);
 		
 		ps.setString(1, hero.getHeroName());
 		ps.setString(2, hero.getAtkType());
@@ -64,28 +63,34 @@ public class HeroDao {
 	
 	public List<Hero> viewHero() {
 		List<Hero> hl = new ArrayList<Hero>();
+		String deleteQuery = "SELECT * FROM herolist";
 		
+		try{
+			ps = con.prepareStatement(deleteQuery);
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		close();
 		return hl;
-		
 	}
 	
 	//closes connections
 	public void close() {
 		
 		try {
-			if(con!=null)
-				con.close();
+			if(con!=null) con.close();
 			
-			if(ps!=null)
-				ps.close();
+			if(ps!=null) ps.close();
 			
-			if(st!=null)
-				st.close();
+			if(st!=null) st.close();
+			
+			if(rs!=null) rs.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
