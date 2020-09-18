@@ -10,7 +10,7 @@
 	<form method="POST" action="AddHeroController">
 	
 		<b>Enter Hero Name:</b>
-		<input type="text" name="heroName" required="required"> <br>
+		<input type="text" name="heroName" maxlength="30" required="required"> <br>
 
 		<b>Attack Type:</b>
 		<input type="radio" name="atkType" value = "Melee" required="required"> Melee

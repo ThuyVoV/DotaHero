@@ -8,7 +8,7 @@
 <title>view hero</title>
 </head>
 <body>
- 	inside viewhero.jsp view hero test
+ 	<a href="addHero.jsp">Back</a>
  	
  	<table border="1" cellpadding="5">
 		<caption><h2>List of Heroes</h2></caption>

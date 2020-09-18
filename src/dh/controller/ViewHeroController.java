@@ -21,7 +21,7 @@ import dh.herodao.HeroDao;
 public class ViewHeroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	HeroDao heroDao = new HeroDao();
+	private HeroDao heroDao = new HeroDao();
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

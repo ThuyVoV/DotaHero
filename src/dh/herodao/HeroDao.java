@@ -54,7 +54,7 @@ public class HeroDao {
 		ps.setFloat(14, hero.getGainInt());
 		ps.executeUpdate();
 		
-		close();
+		
 	}
 	
 	public void removeHero() {
@@ -93,7 +93,7 @@ public class HeroDao {
 			e.printStackTrace();
 		}
 		
-		close();
+		
 		return hl;
 	}
 	
