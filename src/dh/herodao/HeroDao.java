@@ -71,15 +71,21 @@ public class HeroDao {
 			rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				Hero hero = new Hero();
+//				Hero hero = new Hero();
 				
-				hero.setHeroName(rs.getString("hero_name"));
-				hero.setAtkType(rs.getString("atk_type"));
-				hero.setMainStats(rs.getString("main_stats"));
+//				hero.setHeroName(rs.getString("hero_name"));
+//				hero.setAtkType(rs.getString("atk_type"));
+//				hero.setMainStats(rs.getString("main_stats"));
+//				
+//				System.out.println(hero.getHeroName()+" "+hero.getAtkType()+" "+hero.getMainStats());
 				
-				System.out.println(hero.getHeroName()+" "+hero.getAtkType()+" "+hero.getMainStats());
-				
-				hl.add(hero);
+				hl.add( new Hero( rs.getString("hero_name"), rs.getString("atk_type"), rs.getString("main_stats"), 
+						Integer.parseInt(rs.getString("base_hp")), Integer.parseInt(rs.getString("base_mp")), 
+						Integer.parseInt(rs.getString("base_atk")), Integer.parseInt(rs.getString("base_armor")), 
+						Integer.parseInt(rs.getString("base_ms")), Integer.parseInt(rs.getString("base_str")), 
+						Integer.parseInt(rs.getString("base_agi")), Integer.parseInt(rs.getString("base_int")), 
+						Float.parseFloat(rs.getString("gain_str")), Float.parseFloat(rs.getString("gain_agi")),
+						Float.parseFloat( rs.getString("gain_int"))));
 			}
 			
 		} catch (SQLException e) {

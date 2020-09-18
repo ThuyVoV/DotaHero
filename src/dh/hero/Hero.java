@@ -31,17 +31,21 @@ public class Hero {
 	private int baseArmor;
 	private int baseMS;
 	private int baseStr;
-	private float gainStr;
 	private int baseAgi;
-	private float gainAgi;
 	private int baseInt;
+	private float gainStr;
+	private float gainAgi;
 	private float gainInt;
+
+
 	
 	public Hero() {}
 	
+	
+	
 	public Hero(String heroName, String atkType, String mainStats, int baseHP, int baseMP, int baseAtk, int baseArmor,
-			int baseMS, int baseStr, float gainStr, int baseAgi, float gainAgi, int baseInt, float gainInt) {
-
+			int baseMS, int baseStr, int baseAgi, int baseInt, float gainStr, float gainAgi, float gainInt) {
+		super();
 		this.heroName = heroName;
 		this.atkType = atkType;
 		this.mainStats = mainStats;
@@ -51,13 +55,15 @@ public class Hero {
 		this.baseArmor = baseArmor;
 		this.baseMS = baseMS;
 		this.baseStr = baseStr;
-		this.gainStr = gainStr;
 		this.baseAgi = baseAgi;
-		this.gainAgi = gainAgi;
 		this.baseInt = baseInt;
+		this.gainStr = gainStr;
+		this.gainAgi = gainAgi;
 		this.gainInt = gainInt;
 	}
-	
+
+
+
 	public String getHeroName() {
 		return heroName;
 	}

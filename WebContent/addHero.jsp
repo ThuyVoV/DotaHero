@@ -31,7 +31,7 @@
 		<input type="number" step="any" name="baseMP" value="0" 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 	
-		Attack:
+		Attack Damage:
 		<input type="number" step="1" name="baseAtk" value="0" required="required"> <br>
 		
 		Armor:
