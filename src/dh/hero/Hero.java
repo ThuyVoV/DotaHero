@@ -37,12 +37,8 @@ public class Hero {
 	private float gainAgi;
 	private float gainInt;
 
-
-	
 	public Hero() {}
-	
-	
-	
+
 	public Hero(String heroName, String atkType, String mainStats, int baseHP, int baseMP, int baseAtk, int baseArmor,
 			int baseMS, int baseStr, int baseAgi, int baseInt, float gainStr, float gainAgi, float gainInt) {
 		super();
@@ -61,8 +57,6 @@ public class Hero {
 		this.gainAgi = gainAgi;
 		this.gainInt = gainInt;
 	}
-
-
 
 	public String getHeroName() {
 		return heroName;

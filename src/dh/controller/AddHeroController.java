@@ -41,6 +41,7 @@ public class AddHeroController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//create a hero object and set its attributes
 		Hero hero = new Hero();
 		
 		hero.setHeroName(request.getParameter("heroName"));
@@ -77,6 +78,7 @@ public class AddHeroController extends HttpServlet {
 //		System.out.println("gagi: " +request.getParameter("gainAgi"));
 //		System.out.println("gint: " +request.getParameter("gainInt"));
 		
+		//calls the heroDAO to add the hero to the database
 		try {
 			heroDao.addHero(hero);
 		} catch (ClassNotFoundException e) {

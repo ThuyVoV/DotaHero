@@ -19,7 +19,7 @@ public class HeroDao {
 	public HeroDao() {
 		this.order = "DESC";
 		
-		
+		//establish connection with JDBC
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url="jdbc:mysql://localhost:3306/dotahero?serverTimezone=UTC";
@@ -37,7 +37,7 @@ public class HeroDao {
 	}
 	
 	public void addHero(Hero hero) throws ClassNotFoundException, SQLException{
-		
+		//query to add the hero in
 		String addQuery = "INSERT INTO " + "herolist(hero_name, atk_type, main_stats, "
 				+ "base_hp, base_mp, base_atk, base_armor, base_ms, "
 				+ "base_str, base_agi, base_int, gain_str, gain_agi, gain_int) "
@@ -45,6 +45,7 @@ public class HeroDao {
 		
 		ps = con.prepareStatement(addQuery);
 		
+		//replace each ? with its value
 		ps.setString(1, hero.getHeroName());
 		ps.setString(2, hero.getAtkType());
 		ps.setString(3, hero.getMainStats());
@@ -60,8 +61,7 @@ public class HeroDao {
 		ps.setFloat(13, hero.getBaseAgi());
 		ps.setFloat(14, hero.getGainInt());
 		ps.executeUpdate();
-		
-		
+
 	}
 	
 	public void removeHero() {
@@ -76,6 +76,12 @@ public class HeroDao {
 		
 		List<Hero> hl = new ArrayList<Hero>();
 		
+		/*
+		 * checks the last column it was sorted by, it is the same column
+		 * switch order between ASC and DESC
+		 * 
+		 * if this is a new column, default to ASC
+		 */
 		if(orderBy.equals(prevOrderBy)) {
 //			prevOrderBy = orderBy;
 //			order="ASC";

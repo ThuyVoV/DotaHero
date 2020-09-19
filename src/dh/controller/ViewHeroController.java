@@ -28,11 +28,14 @@ public class ViewHeroController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//default sorting order
 		if(prevOrderBy==null)
 			prevOrderBy = "hero_name";
 		
+		//passes in the order that was last sorted by and the order to sort by
 		List<Hero> hl = heroDao.viewHero(prevOrderBy, request.getParameter("sort"));
 		
+		//order that was last sorted by
 		prevOrderBy = request.getParameter("sort");
 //		for(Hero h: hl) {
 //			System.out.println(h.getHeroName());
