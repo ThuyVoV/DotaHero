@@ -13,9 +13,9 @@
  	<table border="1" cellpadding="5">
 		<caption><h2>List of Heroes</h2></caption>
 			<tr>
-				<th>Name</th>
-				<th>Attack Type</th>
-				<th>Main Attribute</th>
+				<th><a href="ViewHeroController?sort=hero_name">Name</a></th>
+				<th><a href="ViewHeroController?sort=atk_type">Attack Type</a></th>
+				<th><a href="ViewHeroController?sort=main_stats">Main Attribute</a></th>
 				<th>Base HP</th>
 				<th>Base MP</th>
 				<th>Base Attack Damage</th>

@@ -7,6 +7,7 @@
 <title>Add Hero</title>
 </head>
 <body>
+	<h1>Add a Hero</h1>
 	<form method="POST" action="AddHeroController">
 	
 		<b>Enter Hero Name:</b>
@@ -71,7 +72,7 @@
 		
 	</form>
 	
-	<a href="ViewHeroController">view Hero</a>
+	<a href="ViewHeroController?sort=hero_name">view Hero</a>
 	
 	
 </body>

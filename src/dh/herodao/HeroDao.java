@@ -61,9 +61,9 @@ public class HeroDao {
 	
 	}
 	
-	public List<Hero> viewHero() {
+	public List<Hero> viewHero(String str) {
 		List<Hero> hl = new ArrayList<Hero>();
-		String deleteQuery = "SELECT * FROM herolist";
+		String deleteQuery = "SELECT * FROM herolist ORDER BY " + str;
 		
 		
 		try{

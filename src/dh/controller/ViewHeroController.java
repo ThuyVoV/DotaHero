@@ -26,7 +26,9 @@ public class ViewHeroController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Hero> hl = heroDao.viewHero();
+		
+		
+		List<Hero> hl = heroDao.viewHero(request.getParameter("sort"));
 		
 		for(Hero h: hl) {
 			System.out.println(h.getHeroName());
