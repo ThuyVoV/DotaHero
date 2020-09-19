@@ -21,13 +21,19 @@ import dh.herodao.HeroDao;
 public class ViewHeroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	static String prevOrderBy;
 	private HeroDao heroDao = new HeroDao();
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Hero> hl = heroDao.viewHero(request.getParameter("sort"));
 		
+		if(prevOrderBy==null)
+			prevOrderBy = "hero_name";
+		
+		List<Hero> hl = heroDao.viewHero(prevOrderBy, request.getParameter("sort"));
+		
+		prevOrderBy = request.getParameter("sort");
 //		for(Hero h: hl) {
 //			System.out.println(h.getHeroName());
 //		}

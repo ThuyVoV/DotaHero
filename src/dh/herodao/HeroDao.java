@@ -13,7 +13,13 @@ public class HeroDao {
 	private ResultSet rs = null;
 //	String order = "DESC";
 	
+	String order;
+	//String prevOrderBy = "hero_name";
+	
 	public HeroDao() {
+		this.order = "DESC";
+		
+		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String url="jdbc:mysql://localhost:3306/dotahero?serverTimezone=UTC";
@@ -61,19 +67,34 @@ public class HeroDao {
 	public void removeHero() {
 	
 	}
-	static String order = "DESC";
-	public List<Hero> viewHero(String orderBy) {
+	
+	public List<Hero> viewHero(String prevOrderBy, String orderBy) {
+		
+		System.out.println("this is prevorderby:" + prevOrderBy);
+		System.out.println("this is orderBy: " + orderBy);
+		System.out.println("this is order: " + order);
+		
 		List<Hero> hl = new ArrayList<Hero>();
+		
+		if(orderBy.equals(prevOrderBy)) {
+//			prevOrderBy = orderBy;
+//			order="ASC";
+			
+			if(order.equals("ASC"))
+				order="DESC";
+			else
+				order="ASC";
+		}
+		else {
+//			prevOrderBy = orderBy;
+			order="ASC";
+		}
+		
 		String viewQuery = "SELECT * FROM herolist ORDER BY "+orderBy+" "+order;
 //		String viewQuery = "SELECT * FROM herolist ORDER BY ? ?";
 		
-		
-		if(order.equalsIgnoreCase("desc"))
-			order = "ASC";
-		else
-			order = "DESC";
-		
-		System.out.println("\nthis is order:" + order);
+		System.out.println("this is new order: " + order);
+		System.out.println();
 		
 		try{
 			ps = con.prepareStatement(viewQuery);
