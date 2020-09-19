@@ -60,22 +60,22 @@ public class AddHeroController extends HttpServlet {
 		hero.setGainAgi(Float.parseFloat(request.getParameter("gainAgi")));
 		hero.setGainInt(Float.parseFloat(request.getParameter("gainInt")));
 		
-		System.out.println(request.getParameter("heroName"));
-		System.out.println(request.getParameter("atkType"));
-		System.out.println(request.getParameter("mainStats"));
-		
-		System.out.println("hp: " +request.getParameter("baseHP"));
-		System.out.println("mp: " +request.getParameter("baseMP"));
-		System.out.println("atk: " +request.getParameter("baseAtk"));
-		System.out.println("armor: " +request.getParameter("baseArmor"));
-		System.out.println("ms: " +request.getParameter("baseMS"));
-		System.out.println("bstr: " +request.getParameter("baseStr"));
-		System.out.println("bagi: " +request.getParameter("baseAgi"));
-		System.out.println("bint: " +request.getParameter("baseInt"));
-		
-		System.out.println("gstr: " +request.getParameter("gainStr"));
-		System.out.println("gagi: " +request.getParameter("gainAgi"));
-		System.out.println("gint: " +request.getParameter("gainInt"));
+//		System.out.println(request.getParameter("heroName"));
+//		System.out.println(request.getParameter("atkType"));
+//		System.out.println(request.getParameter("mainStats"));
+//		
+//		System.out.println("hp: " +request.getParameter("baseHP"));
+//		System.out.println("mp: " +request.getParameter("baseMP"));
+//		System.out.println("atk: " +request.getParameter("baseAtk"));
+//		System.out.println("armor: " +request.getParameter("baseArmor"));
+//		System.out.println("ms: " +request.getParameter("baseMS"));
+//		System.out.println("bstr: " +request.getParameter("baseStr"));
+//		System.out.println("bagi: " +request.getParameter("baseAgi"));
+//		System.out.println("bint: " +request.getParameter("baseInt"));
+//		
+//		System.out.println("gstr: " +request.getParameter("gainStr"));
+//		System.out.println("gagi: " +request.getParameter("gainAgi"));
+//		System.out.println("gint: " +request.getParameter("gainInt"));
 		
 		try {
 			heroDao.addHero(hero);

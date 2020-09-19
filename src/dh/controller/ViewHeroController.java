@@ -26,22 +26,17 @@ public class ViewHeroController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
 		List<Hero> hl = heroDao.viewHero(request.getParameter("sort"));
 		
-		for(Hero h: hl) {
-			System.out.println(h.getHeroName());
-		}
+//		for(Hero h: hl) {
+//			System.out.println(h.getHeroName());
+//		}
 		
 		HttpSession sess = request.getSession();
 		sess.setAttribute("heroList", hl);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("viewHero.jsp");
 		rd.forward(request, response);
-		
-
-		System.out.println("\nI'm in here, VHC doGet");
 	}
 
 }

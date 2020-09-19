@@ -7,10 +7,11 @@ import java.util.List;
 
 public class HeroDao {
 	
-	Connection con = null;
-	PreparedStatement ps= null;
-	Statement st = null;
-	ResultSet rs = null;
+	private Connection con = null;
+	private PreparedStatement ps= null;
+	private Statement st = null;
+	private ResultSet rs = null;
+//	String order = "DESC";
 	
 	public HeroDao() {
 		try {
@@ -60,14 +61,25 @@ public class HeroDao {
 	public void removeHero() {
 	
 	}
-	
-	public List<Hero> viewHero(String str) {
+	static String order = "DESC";
+	public List<Hero> viewHero(String orderBy) {
 		List<Hero> hl = new ArrayList<Hero>();
-		String deleteQuery = "SELECT * FROM herolist ORDER BY " + str;
+		String viewQuery = "SELECT * FROM herolist ORDER BY "+orderBy+" "+order;
+//		String viewQuery = "SELECT * FROM herolist ORDER BY ? ?";
 		
+		
+		if(order.equalsIgnoreCase("desc"))
+			order = "ASC";
+		else
+			order = "DESC";
+		
+		System.out.println("\nthis is order:" + order);
 		
 		try{
-			ps = con.prepareStatement(deleteQuery);
+			ps = con.prepareStatement(viewQuery);
+//			ps.setString(1, orderBy);
+//			ps.setString(2, "ASC");
+
 			rs = ps.executeQuery();
 			
 			while (rs.next()) {
