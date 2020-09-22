@@ -91,13 +91,18 @@ public class HeroDao {
 			order="ASC";
 		}
 		
-		String viewQuery1 = "SELECT * FROM herolist ORDER BY " + orderBy + " " + order;
-		String viewQuery2 = "SELECT * FROM herolist WHERE main_stats = " + "\"" + prevStats + "\"";
+
 		
-		if(!orderBy.equals("main_stats"))
-			createList(hl, viewQuery1);
-		else
-			rotateStats(hl, viewQuery2, prevStats);
+		
+		if(!orderBy.equals("main_stats")) {
+			String viewQuery = "SELECT * FROM herolist ORDER BY " + orderBy + " " + order;
+			createList(hl, viewQuery);
+		}
+		else {
+			String viewQuery = "SELECT * FROM herolist WHERE main_stats = " + "\"" + prevStats + "\"";
+			createList(hl,viewQuery);
+			rotateStats(hl, prevStats);
+		}
 			
 
 		
@@ -154,7 +159,19 @@ public class HeroDao {
 		}
 	}
 	
-	private void rotateStats(List<Hero> hl, String viewQuery, String prevStats) {
+	private void rotateStats(List<Hero> hl, String prevStats) {
+		for(int i = 0; i < 2; i++) {
+			if(prevStats.equals("Strength"))
+				prevStats="Agility";
+			else if (prevStats.equals("Agility"))
+				prevStats= "Intelligent";
+			else if(prevStats.equals("Intelligent"))
+				prevStats= "Strength";
+			
+			String viewQuery = "SELECT * FROM herolist WHERE main_stats = " + "\"" + prevStats + "\"";
+			
+			createList(hl, viewQuery);
+		}
 		
 	}
 	
