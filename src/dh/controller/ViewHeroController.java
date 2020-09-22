@@ -21,7 +21,8 @@ import dh.herodao.HeroDao;
 public class ViewHeroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	static String prevOrderBy;
+	private String prevOrderBy;
+	private String prevStats;
 	private HeroDao heroDao = new HeroDao();
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -32,20 +33,40 @@ public class ViewHeroController extends HttpServlet {
 		if(prevOrderBy==null)
 			prevOrderBy = "hero_name";
 		
+		if(prevStats==null)
+			this.prevStats = "Strength";
+		
+		System.out.println("old prevStats " + this.prevStats);
+		
+		if(this.prevOrderBy.equals("main_stats"))
+			getStats();
+		else
+			prevStats = "Strength";
+			
+		System.out.println("new prevStats " + this.prevStats);
+		
 		//passes in the order that was last sorted by and the order to sort by
-		List<Hero> hl = heroDao.viewHero(prevOrderBy, request.getParameter("sort"));
+		List<Hero> hl = heroDao.viewHero(prevOrderBy, this.prevStats, request.getParameter("sort"));
 		
 		//order that was last sorted by
 		prevOrderBy = request.getParameter("sort");
-//		for(Hero h: hl) {
-//			System.out.println(h.getHeroName());
-//		}
+
 		
 		HttpSession sess = request.getSession();
 		sess.setAttribute("heroList", hl);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("viewHero.jsp");
 		rd.forward(request, response);
+	}
+	
+	private void getStats() {
+
+		if(this.prevStats.equals("Strength"))
+			this.prevStats="Agility";
+		else if (this.prevStats.equals("Agility"))
+			this.prevStats= "Intelligent";
+		else if(this.prevStats.equals("Intelligent"))
+			this.prevStats= "Strength";
 	}
 
 }

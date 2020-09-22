@@ -11,10 +11,8 @@ public class HeroDao {
 	private PreparedStatement ps= null;
 	private Statement st = null;
 	private ResultSet rs = null;
-//	String order = "DESC";
-	
+
 	String order;
-	//String prevOrderBy = "hero_name";
 	
 	public HeroDao() {
 		this.order = "DESC";
@@ -68,8 +66,8 @@ public class HeroDao {
 	
 	}
 	
-	public List<Hero> viewHero(String prevOrderBy, String orderBy) {
-		
+	public List<Hero> viewHero(String prevOrderBy, String prevStats, String orderBy) {
+
 		System.out.println("this is prevorderby:" + prevOrderBy);
 		System.out.println("this is orderBy: " + orderBy);
 		System.out.println("this is order: " + order);
@@ -83,40 +81,64 @@ public class HeroDao {
 		 * if this is a new column, default to ASC
 		 */
 		if(orderBy.equals(prevOrderBy)) {
-//			prevOrderBy = orderBy;
-//			order="ASC";
-			
 			if(order.equals("ASC"))
 				order="DESC";
 			else
 				order="ASC";
 		}
 		else {
-//			prevOrderBy = orderBy;
+
 			order="ASC";
 		}
 		
-		String viewQuery = "SELECT * FROM herolist ORDER BY "+orderBy+" "+order;
-//		String viewQuery = "SELECT * FROM herolist ORDER BY ? ?";
+		String viewQuery1 = "SELECT * FROM herolist ORDER BY " + orderBy + " " + order;
+		String viewQuery2 = "SELECT * FROM herolist WHERE main_stats = " + "\"" + prevStats + "\"";
+		
+		if(!orderBy.equals("main_stats"))
+			createList(hl, viewQuery1);
+		else
+			rotateStats(hl, viewQuery2, prevStats);
+			
+
 		
 		System.out.println("this is new order: " + order);
 		System.out.println();
 		
+		//createList(hl, viewQuery);
+		
+//		try{
+//			ps = con.prepareStatement(viewQuery);
+//			rs = ps.executeQuery();
+//			
+//			while (rs.next()) {
+//
+//				
+//				hl.add( new Hero( rs.getString("hero_name"), rs.getString("atk_type"), rs.getString("main_stats"), 
+//						Integer.parseInt(rs.getString("base_hp")), Integer.parseInt(rs.getString("base_mp")), 
+//						Integer.parseInt(rs.getString("base_atk")), Integer.parseInt(rs.getString("base_armor")), 
+//						Integer.parseInt(rs.getString("base_ms")), Integer.parseInt(rs.getString("base_str")), 
+//						Integer.parseInt(rs.getString("base_agi")), Integer.parseInt(rs.getString("base_int")), 
+//						Float.parseFloat(rs.getString("gain_str")), Float.parseFloat(rs.getString("gain_agi")),
+//						Float.parseFloat( rs.getString("gain_int"))));
+//			}
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		
+		return hl;
+	}
+	
+	private void createList(List<Hero> hl, String viewQuery){
+		
 		try{
 			ps = con.prepareStatement(viewQuery);
-//			ps.setString(1, orderBy);
-//			ps.setString(2, "ASC");
-
 			rs = ps.executeQuery();
 			
 			while (rs.next()) {
-//				Hero hero = new Hero();
-				
-//				hero.setHeroName(rs.getString("hero_name"));
-//				hero.setAtkType(rs.getString("atk_type"));
-//				hero.setMainStats(rs.getString("main_stats"));
-//				
-//				System.out.println(hero.getHeroName()+" "+hero.getAtkType()+" "+hero.getMainStats());
+
 				
 				hl.add( new Hero( rs.getString("hero_name"), rs.getString("atk_type"), rs.getString("main_stats"), 
 						Integer.parseInt(rs.getString("base_hp")), Integer.parseInt(rs.getString("base_mp")), 
@@ -128,12 +150,12 @@ public class HeroDao {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private void rotateStats(List<Hero> hl, String viewQuery, String prevStats) {
 		
-		
-		return hl;
 	}
 	
 	//closes connections
