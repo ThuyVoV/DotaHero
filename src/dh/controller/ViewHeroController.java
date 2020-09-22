@@ -29,7 +29,7 @@ public class ViewHeroController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//default sorting order
+		//default sorting order, default sort by stats
 		if(prevOrderBy==null)
 			prevOrderBy = "hero_name";
 		
@@ -38,6 +38,7 @@ public class ViewHeroController extends HttpServlet {
 		
 		System.out.println("old prevStats " + this.prevStats);
 		
+		//if first time clicking on main_stats column sort by str first
 		if(this.prevOrderBy.equals("main_stats"))
 			getStats();
 		else
@@ -45,7 +46,7 @@ public class ViewHeroController extends HttpServlet {
 			
 		System.out.println("new prevStats " + this.prevStats);
 		
-		//passes in the order that was last sorted by and the order to sort by
+		//passes in the order that was last sorted by and the stats and the order to sort by
 		List<Hero> hl = heroDao.viewHero(prevOrderBy, this.prevStats, request.getParameter("sort"));
 		
 		//order that was last sorted by
@@ -59,8 +60,8 @@ public class ViewHeroController extends HttpServlet {
 		rd.forward(request, response);
 	}
 	
+	//rotates between stats
 	private void getStats() {
-
 		if(this.prevStats.equals("Strength"))
 			this.prevStats="Agility";
 		else if (this.prevStats.equals("Agility"))

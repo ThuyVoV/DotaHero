@@ -91,14 +91,16 @@ public class HeroDao {
 			order="ASC";
 		}
 		
-
-		
-		
+		// main_stats has a different query from all the other columns
 		if(!orderBy.equals("main_stats")) {
 			String viewQuery = "SELECT * FROM herolist ORDER BY " + orderBy + " " + order;
 			createList(hl, viewQuery);
 		}
 		else {
+			/*
+			 * this will call createList 3 times, once here and twice in rotateStats
+			 * each time it is called it will grab all the heroes of a specific stats
+			 */
 			String viewQuery = "SELECT * FROM herolist WHERE main_stats = " + "\"" + prevStats + "\"";
 			createList(hl,viewQuery);
 			rotateStats(hl, prevStats);
@@ -108,34 +110,11 @@ public class HeroDao {
 		
 		System.out.println("this is new order: " + order);
 		System.out.println();
-		
-		//createList(hl, viewQuery);
-		
-//		try{
-//			ps = con.prepareStatement(viewQuery);
-//			rs = ps.executeQuery();
-//			
-//			while (rs.next()) {
-//
-//				
-//				hl.add( new Hero( rs.getString("hero_name"), rs.getString("atk_type"), rs.getString("main_stats"), 
-//						Integer.parseInt(rs.getString("base_hp")), Integer.parseInt(rs.getString("base_mp")), 
-//						Integer.parseInt(rs.getString("base_atk")), Integer.parseInt(rs.getString("base_armor")), 
-//						Integer.parseInt(rs.getString("base_ms")), Integer.parseInt(rs.getString("base_str")), 
-//						Integer.parseInt(rs.getString("base_agi")), Integer.parseInt(rs.getString("base_int")), 
-//						Float.parseFloat(rs.getString("gain_str")), Float.parseFloat(rs.getString("gain_agi")),
-//						Float.parseFloat( rs.getString("gain_int"))));
-//			}
-//			
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
-		
+
 		return hl;
 	}
 	
+	//creates the list of heroes
 	private void createList(List<Hero> hl, String viewQuery){
 		
 		try{
@@ -143,7 +122,6 @@ public class HeroDao {
 			rs = ps.executeQuery();
 			
 			while (rs.next()) {
-
 				
 				hl.add( new Hero( rs.getString("hero_name"), rs.getString("atk_type"), rs.getString("main_stats"), 
 						Integer.parseInt(rs.getString("base_hp")), Integer.parseInt(rs.getString("base_mp")), 
@@ -159,6 +137,11 @@ public class HeroDao {
 		}
 	}
 	
+	
+	/*
+	 * since main_stats has 3 attribute with no specific comparision
+	 * we just rotate through the stats
+	 */
 	private void rotateStats(List<Hero> hl, String prevStats) {
 		for(int i = 0; i < 2; i++) {
 			if(prevStats.equals("Strength"))
@@ -172,7 +155,6 @@ public class HeroDao {
 			
 			createList(hl, viewQuery);
 		}
-		
 	}
 	
 	//closes connections

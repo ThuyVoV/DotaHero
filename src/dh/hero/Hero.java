@@ -1,6 +1,7 @@
 package dh.hero;
 
 public class Hero {
+	//query to create the table
 	/*
 	 create table herolist(
 		id int AUTO_INCREMENT,
@@ -142,7 +143,4 @@ public class Hero {
 	public void setGainInt(float gainInt) {
 		this.gainInt = gainInt;
 	}
-
-	
-	
 }
