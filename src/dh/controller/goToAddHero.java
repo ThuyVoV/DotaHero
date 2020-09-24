@@ -28,7 +28,12 @@ public class goToAddHero extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		String cat = "cat";
+		
+		String str = "hello " + cat;
+		System.out.println(str);
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 //		RequestDispatcher rd = request.getRequestDispatcher("addHero.jsp");
 //		rd.forward(request, response);

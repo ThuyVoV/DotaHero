@@ -11,6 +11,8 @@ public class HeroDao {
 	private PreparedStatement ps= null;
 	private Statement st = null;
 	private ResultSet rs = null;
+	private String database = "dotahero";
+	private String table = "herolist";
 
 	String order;
 	
@@ -20,7 +22,7 @@ public class HeroDao {
 		//establish connection with JDBC
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url="jdbc:mysql://localhost:3306/dotahero?serverTimezone=UTC";
+			String url="jdbc:mysql://localhost:3306/" + database + "?serverTimezone=UTC";
 			String uname="root";
 			String pass="yogi420tea";
 			
@@ -36,7 +38,7 @@ public class HeroDao {
 	
 	public void addHero(Hero hero) throws ClassNotFoundException, SQLException{
 		//query to add the hero in
-		String addQuery = "INSERT INTO " + "herolist(hero_name, atk_type, main_stats, "
+		String addQuery = "INSERT INTO " + table + "(hero_name, atk_type, main_stats, "
 				+ "base_hp, base_mp, base_atk, base_armor, base_ms, "
 				+ "base_str, base_agi, base_int, gain_str, gain_agi, gain_int) "
 				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
@@ -93,7 +95,7 @@ public class HeroDao {
 		
 		// main_stats has a different query from all the other columns
 		if(!orderBy.equals("main_stats")) {
-			String viewQuery = "SELECT * FROM herolist ORDER BY " + orderBy + " " + order;
+			String viewQuery = "SELECT * FROM " + table + " ORDER BY " + orderBy + " " + order;
 			createList(hl, viewQuery);
 		}
 		else {
@@ -101,7 +103,7 @@ public class HeroDao {
 			 * this will call createList 3 times, once here and twice in rotateStats
 			 * each time it is called it will grab all the heroes of a specific stats
 			 */
-			String viewQuery = "SELECT * FROM herolist WHERE main_stats = " + "\"" + prevStats + "\"";
+			String viewQuery = "SELECT * FROM " + table + " WHERE main_stats = " + "\"" + prevStats + "\"";
 			createList(hl,viewQuery);
 			rotateStats(hl, prevStats);
 		}
@@ -151,7 +153,7 @@ public class HeroDao {
 			else if(prevStats.equals("Intelligent"))
 				prevStats= "Strength";
 			
-			String viewQuery = "SELECT * FROM herolist WHERE main_stats = " + "\"" + prevStats + "\"";
+			String viewQuery = "SELECT * FROM " + table + " WHERE main_stats = " + "\"" + prevStats + "\"";
 			
 			createList(hl, viewQuery);
 		}
