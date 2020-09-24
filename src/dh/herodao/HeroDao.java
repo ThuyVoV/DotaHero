@@ -28,6 +28,9 @@ public class HeroDao {
 			
 			con = DriverManager.getConnection(url,uname,pass);
 			
+			checkDB();
+			
+			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -62,6 +65,7 @@ public class HeroDao {
 		ps.setFloat(14, hero.getGainInt());
 		ps.executeUpdate();
 
+		System.out.println("successful hero creation");
 	}
 	
 	public void removeHero() {
@@ -156,6 +160,91 @@ public class HeroDao {
 			String viewQuery = "SELECT * FROM " + table + " WHERE main_stats = " + "\"" + prevStats + "\"";
 			
 			createList(hl, viewQuery);
+		}
+	}
+	
+	private void checkDB() {
+		
+		try {
+
+//			rs = con.getMetaData().getCatalogs();
+			
+			DatabaseMetaData md = con.getMetaData();
+			
+			rs = md.getTables(null, null, table , null);
+			if(rs.next()) {
+				System.out.println("this table exists: " + table);
+			}
+			else {
+				System.out.println("this table doesnt exist: " + table);
+				String query = "create table " + table +"(id int AUTO_INCREMENT,"
+						+ "hero_name varchar(30),"
+						+ "atk_type varchar(10),"
+						+ "main_stats varchar(15),"
+						+ "base_hp int,"
+						+ "base_mp int,"
+						+ "base_atk int,"
+						+ "base_armor int,"
+						+ "base_ms int,"
+						+ "base_str int,"
+						+ "base_agi int,"
+						+ "base_int int,"
+						+ "gain_str DECIMAL(2,1),"
+						+ "gain_agi DECIMAL(2,1),"
+						+ "gain_int DECIMAL(2,1),"
+						+ "PRIMARY KEY(id)"
+						+ ")";
+				
+				st = con.createStatement();
+				
+				st.executeUpdate(query);
+				System.out.println("table created: "+ table +"\n");
+			}
+
+			
+//			while(rs.next()) {
+//				
+//				String DBname = rs.getString(1);
+//				
+//				System.out.println("hi in rs next");
+//				System.out.println("DBname is: " + DBname);
+//				System.out.println("rsstring is: " + rs.getString(3));
+//				
+//				if (DBname.equals(table)) {
+//					System.out.println("this table exists: " + table);
+//					exist = true;
+//				}
+//			}
+//			
+//			if(exist == false) {
+//				String query = "create table " + table +"(id int AUTO_INCREMENT,"
+//						+ "hero_name varchar(30),"
+//						+ "atk_type varchar(10),"
+//						+ "main_stats varchar(15),"
+//						+ "base_hp int,"
+//						+ "base_mp int,"
+//						+ "base_atk int,"
+//						+ "base_armor int,"
+//						+ "base_ms int,"
+//						+ "base_str int,"
+//						+ "base_agi int,"
+//						+ "base_int int,"
+//						+ "gain_str DECIMAL(2,1),"
+//						+ "gain_agi DECIMAL(2,1),"
+//						+ "gain_int DECIMAL(2,1),"
+//						+ "PRIMARY KEY(id)"
+//						+ ")";
+//				
+//				st = con.createStatement();
+//				
+//				st.executeUpdate(query);
+//			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (NullPointerException e) {
+			e.printStackTrace();
 		}
 	}
 	

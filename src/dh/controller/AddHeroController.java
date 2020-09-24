@@ -19,13 +19,13 @@ import dh.herodao.HeroDao;
 public class AddHeroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private HeroDao heroDao = new HeroDao();
+	private HeroDao heroDao;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public AddHeroController() {
         super();
-        // TODO Auto-generated constructor stub
+        heroDao = new HeroDao();
     }
 
 	/**
@@ -81,6 +81,8 @@ public class AddHeroController extends HttpServlet {
 		//calls the heroDAO to add the hero to the database
 		try {
 			heroDao.addHero(hero);
+			response.sendRedirect("successfulAdd.jsp");
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -89,7 +91,7 @@ public class AddHeroController extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		response.sendRedirect("addHero.jsp");
+//		response.sendRedirect("addHero.jsp");
 	}
 
 }

@@ -23,18 +23,24 @@ public class ViewHeroController extends HttpServlet {
 
 	private String prevOrderBy;
 	private String prevStats;
-	private HeroDao heroDao = new HeroDao();
+	private HeroDao heroDao;
+	
+	public ViewHeroController() {
+		prevOrderBy = "hero_name";
+		prevStats = "Strength";
+		heroDao = new HeroDao();
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//default sorting order, default sort by stats
-		if(prevOrderBy==null)
-			prevOrderBy = "hero_name";
-		
-		if(prevStats==null)
-			this.prevStats = "Strength";
+//		if(prevOrderBy==null)
+//			prevOrderBy = "hero_name";
+//		
+//		if(prevStats==null)
+//			this.prevStats = "Strength";
 		
 		System.out.println("old prevStats " + this.prevStats);
 		

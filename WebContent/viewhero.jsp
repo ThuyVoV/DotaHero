@@ -10,7 +10,7 @@
 <body>
  	<a href="addHero.jsp">Back</a>
  	
- 	<table border="1" cellpadding="5">
+ 	<table border="1">
 		<caption><h2>List of Heroes</h2></caption>
 			<tr>
 				<th><a href="ViewHeroController?sort=hero_name">Name</a></th>
