@@ -62,7 +62,7 @@ public class ViewHeroController extends HttpServlet {
 		HttpSession sess = request.getSession();
 		sess.setAttribute("heroList", hl);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("viewHero.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("viewHero2.jsp");
 		rd.forward(request, response);
 	}
 	

@@ -189,9 +189,9 @@ public class HeroDao {
 						+ "base_str int,"
 						+ "base_agi int,"
 						+ "base_int int,"
-						+ "gain_str DECIMAL(2,1),"
-						+ "gain_agi DECIMAL(2,1),"
-						+ "gain_int DECIMAL(2,1),"
+						+ "gain_str DECIMAL(3,1),"
+						+ "gain_agi DECIMAL(3,1),"
+						+ "gain_int DECIMAL(3,1),"
 						+ "PRIMARY KEY(id)"
 						+ ")";
 				

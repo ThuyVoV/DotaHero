@@ -1,7 +1,6 @@
 package dh.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class goToAddHero
+ * Servlet implementation class GoToEditHero
  */
-@WebServlet("/hey")
-public class GoToAddHero extends HttpServlet {
+@WebServlet("/GoToEditHero")
+public class GoToEditHero extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GoToAddHero() {
+    public GoToEditHero() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,17 +26,8 @@ public class GoToAddHero extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String cat = "cat";
-		
-		String str = "hello " + cat;
-		System.out.println(str);
-		
+		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-//		RequestDispatcher rd = request.getRequestDispatcher("addHero.jsp");
-//		rd.forward(request, response);
-		
-		response.sendRedirect("addHero.jsp");
 	}
 
 	/**

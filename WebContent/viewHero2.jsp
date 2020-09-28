@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<%@ page import="dh.hero.Hero" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>view hero</title>
+<title>Insert title here</title>
 </head>
 <body>
  	<a href="addHero.jsp">Back</a>
@@ -29,24 +30,30 @@
 				<th><a href="ViewHeroController?sort=gain_int">Intelligent Gain</a></th>
 
 			</tr>
-		<c:forEach var="hero" items="${heroList}">
+			
+		
+		<% 
+			List<Hero> heroList = (List<Hero>) session.getAttribute("heroList");
+			for(Hero hero : heroList){
+		%>
 			<tr>
-				<td><a href="GoToEditHero"><c:out value="${hero.heroName}" /></a></td>
-				<td><c:out value="${hero.atkType}" /></td>
-				<td><c:out value="${hero.mainStats}" /></td>
-				<td><c:out value="${hero.baseHP}" /></td>
-				<td><c:out value="${hero.baseMP}" /></td>
-				<td><c:out value="${hero.baseAtk}" /></td>
-				<td><c:out value="${hero.baseArmor}" /></td>
-				<td><c:out value="${hero.baseMS}" /></td>
-				<td><c:out value="${hero.baseStr}" /></td>
-				<td><c:out value="${hero.baseAgi}" /></td>
-				<td><c:out value="${hero.baseInt}" /></td>
-				<td><c:out value="${hero.gainStr}" /></td>
-				<td><c:out value="${hero.gainAgi}" /></td>
-				<td><c:out value="${hero.gainInt}" /></td>
+				<td><%= hero.getHeroName() %></td>
+				<td><%= hero.getAtkType() %></td>
+				<td><%= hero.getMainStats() %></td>
+				<td><%= hero.getBaseHP() %></td>
+				<td><%= hero.getBaseMP() %></td>
+				<td><%= hero.getBaseAtk() %></td>
+				<td><%= hero.getBaseArmor() %></td>
+				<td><%= hero.getBaseMS() %></td>
+				<td><%= hero.getBaseStr() %></td>
+				<td><%= hero.getBaseAgi() %></td>
+				<td><%= hero.getBaseInt() %></td>
+				<td><%= hero.getGainStr() %></td>
+				<td><%= hero.getGainAgi() %></td>
+				<td><%= hero.getGainInt() %></td>
 			</tr>
-		</c:forEach>
+		<% } %>
+		
 	</table>
 	
 	<br><br>
