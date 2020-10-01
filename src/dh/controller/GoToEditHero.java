@@ -27,6 +27,7 @@ public class GoToEditHero extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("the hero we are going to edit is: " + request.getParameter("hero"));
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
