@@ -68,8 +68,10 @@ public class HeroDao {
 		System.out.println("successful hero creation");
 	}
 	
-	public Hero getHero() {
+	public Hero getHero(String heroName) {
 		Hero hero = new Hero();
+		
+		
 		
 		return hero;
 	}
