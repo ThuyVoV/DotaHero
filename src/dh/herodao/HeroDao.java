@@ -68,6 +68,12 @@ public class HeroDao {
 		System.out.println("successful hero creation");
 	}
 	
+	public Hero getHero() {
+		Hero hero = new Hero();
+		
+		return hero;
+	}
+	
 	public void removeHero() {
 	
 	}
@@ -201,44 +207,6 @@ public class HeroDao {
 				System.out.println("table created: "+ table +"\n");
 			}
 
-			
-//			while(rs.next()) {
-//				
-//				String DBname = rs.getString(1);
-//				
-//				System.out.println("hi in rs next");
-//				System.out.println("DBname is: " + DBname);
-//				System.out.println("rsstring is: " + rs.getString(3));
-//				
-//				if (DBname.equals(table)) {
-//					System.out.println("this table exists: " + table);
-//					exist = true;
-//				}
-//			}
-//			
-//			if(exist == false) {
-//				String query = "create table " + table +"(id int AUTO_INCREMENT,"
-//						+ "hero_name varchar(30),"
-//						+ "atk_type varchar(10),"
-//						+ "main_stats varchar(15),"
-//						+ "base_hp int,"
-//						+ "base_mp int,"
-//						+ "base_atk int,"
-//						+ "base_armor int,"
-//						+ "base_ms int,"
-//						+ "base_str int,"
-//						+ "base_agi int,"
-//						+ "base_int int,"
-//						+ "gain_str DECIMAL(2,1),"
-//						+ "gain_agi DECIMAL(2,1),"
-//						+ "gain_int DECIMAL(2,1),"
-//						+ "PRIMARY KEY(id)"
-//						+ ")";
-//				
-//				st = con.createStatement();
-//				
-//				st.executeUpdate(query);
-//			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
