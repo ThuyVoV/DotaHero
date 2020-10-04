@@ -69,11 +69,33 @@ public class HeroDao {
 	}
 	
 	public Hero getHero(String heroName) {
-		Hero hero = new Hero();
+		Hero hero = null;
 		
+		String getQuery = "SELECT * FROM " + table + " WHERE hero_name = ?";
 		
+		try {
+			ps = con.prepareStatement(getQuery);
+			ps.setString(1, heroName);
+			rs = ps.executeQuery();
+			rs.next();
+			
+			hero = new Hero( rs.getString("hero_name"), rs.getString("atk_type"), rs.getString("main_stats"), 
+					Integer.parseInt(rs.getString("base_hp")), Integer.parseInt(rs.getString("base_mp")), 
+					Integer.parseInt(rs.getString("base_atk")), Integer.parseInt(rs.getString("base_armor")), 
+					Integer.parseInt(rs.getString("base_ms")), Integer.parseInt(rs.getString("base_str")), 
+					Integer.parseInt(rs.getString("base_agi")), Integer.parseInt(rs.getString("base_int")), 
+					Float.parseFloat(rs.getString("gain_str")), Float.parseFloat(rs.getString("gain_agi")),
+					Float.parseFloat( rs.getString("gain_int")));
+			
+
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		return hero;
+
 	}
 	
 	public void removeHero() {

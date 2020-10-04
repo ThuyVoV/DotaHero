@@ -1,11 +1,14 @@
 package dh.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dh.hero.Hero;
 import dh.herodao.HeroDao;
@@ -32,19 +35,14 @@ public class GoToEditHero extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		Hero hero = heroDao.getHero(request.getParameter("hero"));
 		
-		System.out.println("the hero we are going to edit is: " + request.getParameter("hero"));
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		HttpSession sess = request.getSession();
+		sess.setAttribute("hero", hero);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("editHero.jsp");
+		rd.forward(request, response);
 	}
 
 }
