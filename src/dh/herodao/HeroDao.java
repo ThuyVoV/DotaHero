@@ -61,7 +61,7 @@ public class HeroDao {
 		ps.setInt(10, hero.getBaseAgi());
 		ps.setInt(11, hero.getBaseInt());
 		ps.setFloat(12, hero.getGainStr());
-		ps.setFloat(13, hero.getBaseAgi());
+		ps.setFloat(13, hero.getGainAgi());
 		ps.setFloat(14, hero.getGainInt());
 		ps.executeUpdate();
 

@@ -10,20 +10,35 @@
 <body>
 
 	<% Hero hero = (Hero) session.getAttribute("hero"); %>
-	<h1>Add a Hero</h1>
+	<h1>Editing <%= hero.getHeroName() %></h1>
 	<form method="POST" action="AddHeroController">
 	
 		<b>Enter Hero Name:</b>
-		<input type="text" name="heroName" maxlength="30" required="required"> <br>
+		<input type="text" name="heroName" maxlength="30" required="required" value=<%= hero.getHeroName() %>> <br>
 
 		<b>Attack Type:</b>
-		<input type="radio" name="atkType" value = "Melee" required="required"> Melee
-		<input type="radio" name="atkType" value = "Range"> Range <br>
+		<% if (hero.getAtkType().equals("Melee")){ %>
+			<input type="radio" name="atkType" value = "Melee" required="required" checked> Melee
+			<input type="radio" name="atkType" value = "Range"> Range <br>
+		<% } else { %>
+			<input type="radio" name="atkType" value = "Melee" required="required"> Melee
+			<input type="radio" name="atkType" value = "Range" checked> Range <br>
+		<% } %>
 		
 		<b>Primary Attribute:</b>
-		<input type="radio" name="mainStats" value = "Strength" required="required"> Strength
-		<input type="radio" name="mainStats" value = "Agility"> Agility
-		<input type="radio" name="mainStats" value = "Intelligent"> Intelligent <br><br>
+		<% if (hero.getMainStats().equals("Strength")){ %>
+			<input type="radio" name="mainStats" value = "Strength" required="required" checked> Strength
+			<input type="radio" name="mainStats" value = "Agility"> Agility
+			<input type="radio" name="mainStats" value = "Intelligent"> Intelligent <br><br>
+		<% } else if (hero.getMainStats().equals("Agility")){ %>
+			<input type="radio" name="mainStats" value = "Strength" required="required"> Strength
+			<input type="radio" name="mainStats" value = "Agility" checked> Agility
+			<input type="radio" name="mainStats" value = "Intelligent"> Intelligent <br><br>
+		<% } else { %>
+			<input type="radio" name="mainStats" value = "Strength" required="required"> Strength
+			<input type="radio" name="mainStats" value = "Agility" checked> Agility
+			<input type="radio" name="mainStats" value = "Intelligent" checked> Intelligent <br><br>
+		<% } %>
 		
 		<b>Base Stats:</b><br>
 		
