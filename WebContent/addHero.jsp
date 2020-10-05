@@ -15,12 +15,12 @@
 
 		<b>Attack Type:</b>
 		<input type="radio" name="atkType" value = "Melee" required="required"> Melee
-		<input type="radio" name="atkType" value = "Range" checked> Range <br>
+		<input type="radio" name="atkType" value = "Range" > Range <br>
 		
 		<b>Primary Attribute:</b>
 		<input type="radio" name="mainStats" value = "Strength" required="required" > Strength
 		<input type="radio" name="mainStats" value = "Agility"> Agility
-		<input type="radio" name="mainStats" value = "Intelligent" checked> Intelligent <br><br>
+		<input type="radio" name="mainStats" value = "Intelligent" > Intelligent <br><br>
 		
 		<b>Base Stats:</b><br>
 		

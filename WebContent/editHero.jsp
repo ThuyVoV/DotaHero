@@ -43,50 +43,50 @@
 		<b>Base Stats:</b><br>
 		
 		HP:
-		<input type="number" step="any" name="baseHP" value="0" 
+		<input type="number" step="any" name="baseHP" value=<%= hero.getBaseHP() %>
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 	
 		MP:
-		<input type="number" step="any" name="baseMP" value="0" 
+		<input type="number" step="any" name="baseMP" value=<%= hero.getBaseMP() %>
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 	
 		Attack Damage:
-		<input type="number" step="1" name="baseAtk" value="0" required="required"> <br>
+		<input type="number" step="1" name="baseAtk" value=<%= hero.getBaseAtk() %> required="required"> <br>
 		
 		Armor:
-		<input type="number" step="1" name="baseArmor" value="0" required="required"> <br>
+		<input type="number" step="1" name="baseArmor" value=<%= hero.getBaseArmor() %> required="required"> <br>
 	
 		Movement Speed:
-		<input type="number" step="any" name="baseMS" value="100" 
+		<input type="number" step="any" name="baseMS" value=<%= hero.getBaseMS() %>
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 			
 		Strength:
-		<input type="number" step="1" name="baseStr" value="0" 
+		<input type="number" step="1" name="baseStr" value=<%= hero.getBaseStr() %>
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 			
 		Agility:
-		<input type="number" step="1" name="baseAgi" value="0" 
+		<input type="number" step="1" name="baseAgi" value=<%= hero.getBaseAgi() %>
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 			
 		Intelligent:
-		<input type="number" step="1" name="baseInt" value="0" 
+		<input type="number" step="1" name="baseInt" value=<%= hero.getBaseInt() %>
 			oninput="this.value = Math.abs(this.value)" required="required"> <br><br>
 			
 		<b>Stats Gain Per Level:</b><br>
 		
 		Strength:
-		<input type="number" step="0.1" name="gainStr" max="99.9" value="0" 
+		<input type="number" step="0.1" name="gainStr" max="99.9" value=<%= hero.getGainStr() %> 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 			
 		Agility:
-		<input type="number" step="0.1" name="gainAgi" max="99.9" value="0" 
+		<input type="number" step="0.1" name="gainAgi" max="99.9" value=<%= hero.getGainAgi() %> 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 			
 		Intelligent:
-		<input type="number" step="0.1" name="gainInt" max="99.9" value="0" 
+		<input type="number" step="0.1" name="gainInt" max="99.9" value=<%= hero.getGainInt() %> 
 			oninput="this.value = Math.abs(this.value)" required="required"> <br>
 	
-		<input type="submit" name="Submit" value="Add Hero"/> <br><br>
+		<input type="submit" name="Submit" value="Update Hero"/> <br><br>
 		
 	</form>
 	
