@@ -15,7 +15,7 @@ import dh.herodao.HeroDao;
 /**
  * Servlet implementation class dhController
  */
-@WebServlet("/AddHeroController")
+@WebServlet("/AddHero")
 public class AddHeroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

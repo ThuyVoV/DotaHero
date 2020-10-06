@@ -11,7 +11,7 @@
 
 	<% Hero hero = (Hero) session.getAttribute("hero"); %>
 	<h1>Editing <%= hero.getHeroName() %></h1>
-	<form method="POST" action="AddHeroController">
+	<form method="POST" action="UpdateHero">
 	
 		<b>Enter Hero Name:</b>
 		<input type="text" name="heroName" maxlength="30" required="required" value=<%= hero.getHeroName() %>> <br>
@@ -90,7 +90,7 @@
 		
 	</form>
 	
-	<a href="ViewHeroController?sort=hero_name">view Hero</a>
+	<a href="ViewHero?sort=hero_name">view Hero</a>
 	
 	
 </body>

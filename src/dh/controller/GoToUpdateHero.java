@@ -16,8 +16,8 @@ import dh.herodao.HeroDao;
 /**
  * Servlet implementation class GoToEditHero
  */
-@WebServlet("/GoToEditHero")
-public class GoToEditHero extends HttpServlet {
+@WebServlet("/GoToUpdateHero")
+public class GoToUpdateHero extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	HeroDao heroDao;
@@ -25,7 +25,7 @@ public class GoToEditHero extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GoToEditHero() {
+    public GoToUpdateHero() {
         super();
         heroDao = new HeroDao();
         // TODO Auto-generated constructor stub
@@ -41,7 +41,7 @@ public class GoToEditHero extends HttpServlet {
 		HttpSession sess = request.getSession();
 		sess.setAttribute("hero", hero);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("editHero.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("updateHero.jsp");
 		rd.forward(request, response);
 	}
 

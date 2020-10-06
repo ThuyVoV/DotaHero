@@ -37,7 +37,7 @@
 			for(Hero hero : heroList){
 		%>
 			<tr>
-				<td><a href="GoToEditHero?hero=<%= hero.getHeroName() %>"> <%= hero.getHeroName() %> </a></td>
+				<td><a href="GoToUpdateHero?hero=<%= hero.getHeroName() %>"> <%= hero.getHeroName() %> </a></td>
 				<td><%= hero.getAtkType() %></td>
 				<td><%= hero.getMainStats() %></td>
 				<td><%= hero.getBaseHP() %></td>

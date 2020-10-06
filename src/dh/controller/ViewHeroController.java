@@ -17,7 +17,7 @@ import dh.herodao.HeroDao;
 /**
  * Servlet implementation class ViewHeroController
  */
-@WebServlet("/ViewHeroController")
+@WebServlet("/ViewHero")
 public class ViewHeroController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
