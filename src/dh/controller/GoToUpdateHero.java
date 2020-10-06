@@ -41,7 +41,7 @@ public class GoToUpdateHero extends HttpServlet {
 		HttpSession sess = request.getSession();
 		sess.setAttribute("hero", hero);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("updateHero.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("updateHeroPage.jsp");
 		rd.forward(request, response);
 	}
 

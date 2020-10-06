@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.*" %>
-<%@ page import="dh.hero.Hero" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>view hero</title>
 </head>
 <body>
- 	<a href="addHero.jsp">Back</a>
+ 	<a href="addHeroPage.jsp">Back</a>
  	
  	<table border="1">
 		<caption><h2>List of Heroes</h2></caption>
@@ -30,33 +29,27 @@
 				<th><a href="ViewHeroController?sort=gain_int">Intelligent Gain</a></th>
 
 			</tr>
-			
-		
-		<% 
-			List<Hero> heroList = (List<Hero>) session.getAttribute("heroList");
-			for(Hero hero : heroList){
-		%>
+		<c:forEach var="hero" items="${heroList}">
 			<tr>
-				<td><a href="GoToUpdateHero?hero=<%= hero.getHeroName() %>"> <%= hero.getHeroName() %> </a></td>
-				<td><%= hero.getAtkType() %></td>
-				<td><%= hero.getMainStats() %></td>
-				<td><%= hero.getBaseHP() %></td>
-				<td><%= hero.getBaseMP() %></td>
-				<td><%= hero.getBaseAtk() %></td>
-				<td><%= hero.getBaseArmor() %></td>
-				<td><%= hero.getBaseMS() %></td>
-				<td><%= hero.getBaseStr() %></td>
-				<td><%= hero.getBaseAgi() %></td>
-				<td><%= hero.getBaseInt() %></td>
-				<td><%= hero.getGainStr() %></td>
-				<td><%= hero.getGainAgi() %></td>
-				<td><%= hero.getGainInt() %></td>
+				<td><a href="GoToUpdateHero"><c:out value="${hero.heroName}" /></a></td>
+				<td><c:out value="${hero.atkType}" /></td>
+				<td><c:out value="${hero.mainStats}" /></td>
+				<td><c:out value="${hero.baseHP}" /></td>
+				<td><c:out value="${hero.baseMP}" /></td>
+				<td><c:out value="${hero.baseAtk}" /></td>
+				<td><c:out value="${hero.baseArmor}" /></td>
+				<td><c:out value="${hero.baseMS}" /></td>
+				<td><c:out value="${hero.baseStr}" /></td>
+				<td><c:out value="${hero.baseAgi}" /></td>
+				<td><c:out value="${hero.baseInt}" /></td>
+				<td><c:out value="${hero.gainStr}" /></td>
+				<td><c:out value="${hero.gainAgi}" /></td>
+				<td><c:out value="${hero.gainInt}" /></td>
 			</tr>
-		<% } %>
-		
+		</c:forEach>
 	</table>
 	
 	<br><br>
-	<a href="addHero.jsp">Add another hero</a>
+	<a href="addHeroPage.jsp">Add another hero</a>
 </body>
 </html>

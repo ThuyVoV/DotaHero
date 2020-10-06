@@ -37,7 +37,7 @@ public class GoToAddHero extends HttpServlet {
 //		RequestDispatcher rd = request.getRequestDispatcher("addHero.jsp");
 //		rd.forward(request, response);
 		
-		response.sendRedirect("addHero.jsp");
+		response.sendRedirect("addHeroPage.jsp");
 	}
 
 	/**
