@@ -87,8 +87,6 @@ public class HeroDao {
 					Float.parseFloat(rs.getString("gain_str")), Float.parseFloat(rs.getString("gain_agi")),
 					Float.parseFloat( rs.getString("gain_int")));
 			
-
-			
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -96,6 +94,10 @@ public class HeroDao {
 		
 		return hero;
 
+	}
+	
+	public void updateHero(Hero hero, Hero tempHero) throws SQLException{
+		
 	}
 	
 	public void removeHero() {
