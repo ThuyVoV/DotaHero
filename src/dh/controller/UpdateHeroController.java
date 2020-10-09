@@ -86,6 +86,7 @@ public class UpdateHeroController extends HttpServlet {
 		
 		try {
 			heroDao.updateHero(hero, tempHero);
+			response.sendRedirect("successfulUpdatePage.jsp");
 		}
 		catch (SQLException e) {
 			e.printStackTrace();

@@ -54,7 +54,7 @@ public class HeroDao {
 		ps.setString(3, hero.getMainStats());
 		ps.setInt(4, hero.getBaseHP());
 		ps.setInt(5, hero.getBaseMP());
-		ps.setInt(6,hero.getBaseAtk());
+		ps.setInt(6, hero.getBaseAtk());
 		ps.setInt(7, hero.getBaseArmor());
 		ps.setInt(8, hero.getBaseMS());
 		ps.setInt(9, hero.getBaseStr());
@@ -85,7 +85,7 @@ public class HeroDao {
 					Integer.parseInt(rs.getString("base_ms")), Integer.parseInt(rs.getString("base_str")), 
 					Integer.parseInt(rs.getString("base_agi")), Integer.parseInt(rs.getString("base_int")), 
 					Float.parseFloat(rs.getString("gain_str")), Float.parseFloat(rs.getString("gain_agi")),
-					Float.parseFloat( rs.getString("gain_int")));
+					Float.parseFloat(rs.getString("gain_int")));
 			
 		}
 		catch (SQLException e) {
@@ -96,8 +96,37 @@ public class HeroDao {
 
 	}
 	
-	public void updateHero(Hero hero, Hero tempHero) throws SQLException{
+	public void updateHero(Hero hero, Hero tempHero) throws SQLException {
 		
+		String updateQuery = "UPDATE " + table + " SET hero_name = ?, atk_type = ?, main_stats = ?, "
+				+ "base_hp = ?, base_mp = ?, base_atk = ?, base_armor = ?, base_ms = ?, "
+				+ "base_str = ?, base_agi = ?, base_int = ?, "
+				+ "gain_str = ?, gain_agi = ?, gain_int = ? WHERE hero_name = ?";
+		
+		try {
+			ps = con.prepareStatement(updateQuery);
+			ps.setString(1, tempHero.getHeroName());
+			ps.setString(2, tempHero.getAtkType());
+			ps.setString(3, tempHero.getMainStats());
+			ps.setInt(4, tempHero.getBaseHP());
+			ps.setInt(5, tempHero.getBaseMP());
+			ps.setInt(6, tempHero.getBaseAtk());
+			ps.setInt(7, tempHero.getBaseArmor());
+			ps.setInt(8, tempHero.getBaseMS());
+			ps.setInt(9, tempHero.getBaseStr());
+			ps.setInt(10, tempHero.getBaseAgi());
+			ps.setInt(11, tempHero.getBaseInt());
+			ps.setFloat(12, tempHero.getGainStr());
+			ps.setFloat(13, tempHero.getGainAgi());
+			ps.setFloat(14, tempHero.getGainInt());
+			ps.setString(15, hero.getHeroName());
+			ps.executeUpdate();
+			
+			System.out.println("updated hero succesfully");
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void removeHero() {

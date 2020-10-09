@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Hero Added Successfully!</title>
+<title>Hero Updated Successfully!</title>
 </head>
 <body>
-	<h1>Hero Added Successfully!</h1>
+	<h1>Hero Updated Successfully!</h1>
 	<form action="addHeroPage.jsp">
 		<input type="submit" value="back to add hero"> <br><br>
 	</form>
