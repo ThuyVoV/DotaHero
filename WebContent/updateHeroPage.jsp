@@ -90,6 +90,10 @@
 		
 	</form>
 	
+	<form action="deleteConfirmPage.jsp">
+		<input type="submit" value="Delete Hero"/> <br><br>
+	</form>
+	
 	<a href="ViewHero?sort=hero_name">view Hero</a>
 	
 	
