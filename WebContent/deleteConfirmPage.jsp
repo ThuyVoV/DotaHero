@@ -11,8 +11,8 @@
 	<% Hero hero = (Hero) session.getAttribute("hero"); %>
 
 	<form action="DeleteHero">
-		type in "Delete <%= hero.getHeroName() %>" <br>
-		<input type="text"> <br><br>
+		type in "Delete <%= hero.getHeroName() %>" to confirm deletion<br>
+		<input type="text" name="confirm" required> <br><br>
 		
 		<input type="submit" value="Delete Hero">
 	</form>

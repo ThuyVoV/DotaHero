@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dh.hero.Hero;
 
 /**
  * Servlet implementation class DeleteHeroController
@@ -27,6 +30,20 @@ public class DeleteHeroController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession sess = request.getSession();
+		Hero hero = (Hero) sess.getAttribute("hero");
+		
+		String confirm = "Delete " + hero.getHeroName();
+		
+		if(confirm.equals(request.getParameter("confirm"))) {
+			System.out.println("deleting hero successful");
+		}
+		else {
+			System.out.println("deletion failed");
+		}
+		
+		
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
