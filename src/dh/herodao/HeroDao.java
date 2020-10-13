@@ -68,6 +68,7 @@ public class HeroDao {
 		System.out.println("successful hero creation");
 	}
 	
+	//used in GoToUpdateHero to grab the hero for editing
 	public Hero getHero(String heroName) {
 		Hero hero = null;
 		
@@ -93,6 +94,29 @@ public class HeroDao {
 		}
 		
 		return hero;
+	}
+	
+	public int getHeroID(String heroName) {
+		int id = -1;
+		String getQuery = "SELECT * FROM " + table + " WHERE hero_name = ?";
+		
+		try {
+			ps = con.prepareStatement(getQuery);
+			ps.setString(1, heroName);
+			rs = ps.executeQuery();
+			rs.next();
+			
+			System.out.println("this is the id " + rs.getString("id"));
+			
+			id = Integer.parseInt(rs.getString("id"));
+			
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return id;
 
 	}
 	

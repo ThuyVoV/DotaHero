@@ -23,6 +23,7 @@ public class Hero {
 	);
 	 */
 	
+	private int id;
 	private String heroName;
 	private String atkType;
 	private String mainStats;
@@ -58,7 +59,13 @@ public class Hero {
 		this.gainAgi = gainAgi;
 		this.gainInt = gainInt;
 	}
-
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getHeroName() {
 		return heroName;
 	}
@@ -143,4 +150,6 @@ public class Hero {
 	public void setGainInt(float gainInt) {
 		this.gainInt = gainInt;
 	}
+
+
 }
