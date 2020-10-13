@@ -44,7 +44,7 @@ public class HeroDao {
 		String addQuery = "INSERT INTO " + table + "(hero_name, atk_type, main_stats, "
 				+ "base_hp, base_mp, base_atk, base_armor, base_ms, "
 				+ "base_str, base_agi, base_int, gain_str, gain_agi, gain_int) "
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		ps = con.prepareStatement(addQuery);
 		
@@ -96,6 +96,7 @@ public class HeroDao {
 		return hero;
 	}
 	
+	//used for hero deletion
 	public int getHeroID(String heroName) {
 		int id = -1;
 		String getQuery = "SELECT * FROM " + table + " WHERE hero_name = ?";
@@ -153,8 +154,18 @@ public class HeroDao {
 		}
 	}
 	
-	public void removeHero() {
-	
+	public void deleteHero(int id) {
+		String deleteQuery = "DELETE FROM " + table + " WHERE id = ?";
+		
+		try {
+			ps = con.prepareStatement(deleteQuery);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+			System.out.println("deleting hero successful");
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public List<Hero> viewHero(String prevOrderBy, String prevStats, String orderBy) {

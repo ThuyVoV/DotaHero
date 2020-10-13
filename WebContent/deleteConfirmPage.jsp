@@ -11,12 +11,10 @@
 	<%	Hero hero = (Hero) session.getAttribute("hero"); 
 		boolean deletionFail = Boolean.TRUE == session.getAttribute("deletion");
 	%>
-	
 	<%	
 		if(deletionFail){
 	%>
 		Deletion confirmation failed! <br><br>
-		
 	<%	} %>
 	
 

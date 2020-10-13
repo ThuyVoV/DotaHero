@@ -41,17 +41,15 @@ public class DeleteHeroController extends HttpServlet {
 		//checking if it matches the confirmation string
 		if(confirm.equals(request.getParameter("confirm"))) {
 			System.out.println("the hero id is: " + heroDao.getHeroID(hero.getHeroName()));
-			System.out.println("deleting hero successful");
+			heroDao.deleteHero(heroDao.getHeroID(hero.getHeroName()));
+			response.sendRedirect("successfulDeletePage.jsp");
 		}
 		else {
 			boolean deletionFail = true;
-			sess.setAttribute("deletion", deletionFail);
+			sess.setAttribute("deletion", true);
 			response.sendRedirect("deleteConfirmPage.jsp");
 		}
-		
-		
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	/**
