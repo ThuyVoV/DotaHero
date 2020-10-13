@@ -44,8 +44,9 @@ public class DeleteHeroController extends HttpServlet {
 			System.out.println("deleting hero successful");
 		}
 		else {
-			System.out.println("deletion failed");
-			
+			boolean deletionFail = true;
+			sess.setAttribute("deletion", deletionFail);
+			response.sendRedirect("deleteConfirmPage.jsp");
 		}
 		
 		

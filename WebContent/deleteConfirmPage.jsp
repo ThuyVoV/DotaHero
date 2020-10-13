@@ -8,7 +8,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% Hero hero = (Hero) session.getAttribute("hero"); %>
+	<%	Hero hero = (Hero) session.getAttribute("hero"); 
+		boolean deletionFail = Boolean.TRUE == session.getAttribute("deletion");
+	%>
+	
+	<%	
+		if(deletionFail){
+	%>
+		Deletion confirmation failed! <br><br>
+		
+	<%	} %>
+	
 
 	<form action="DeleteHero">
 		type in "Delete <%= hero.getHeroName() %>" to confirm deletion<br>
