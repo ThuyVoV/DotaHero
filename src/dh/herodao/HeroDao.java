@@ -39,7 +39,15 @@ public class HeroDao {
 		}
 	}
 	
-	public void addHero(Hero hero) throws ClassNotFoundException, SQLException{
+	public boolean addHero(Hero hero) throws ClassNotFoundException, SQLException{
+		
+		Hero tempHero = getHero(hero.getHeroName());
+		
+		if(tempHero != null) {
+			System.out.println("this hero already exist");
+			return false;
+		}
+		
 		//query to add the hero in
 		String addQuery = "INSERT INTO " + table + "(hero_name, atk_type, main_stats, "
 				+ "base_hp, base_mp, base_atk, base_armor, base_ms, "
@@ -66,6 +74,8 @@ public class HeroDao {
 		ps.executeUpdate();
 
 		System.out.println("successful hero creation");
+		
+		return true;
 	}
 	
 	//used in GoToUpdateHero to grab the hero for editing
@@ -78,8 +88,8 @@ public class HeroDao {
 			ps = con.prepareStatement(getQuery);
 			ps.setString(1, heroName);
 			rs = ps.executeQuery();
-			rs.next();
-			
+			//rs.next();
+			if(rs.next()) {
 			hero = new Hero( rs.getString("hero_name"), rs.getString("atk_type"), rs.getString("main_stats"), 
 					Integer.parseInt(rs.getString("base_hp")), Integer.parseInt(rs.getString("base_mp")), 
 					Integer.parseInt(rs.getString("base_atk")), Integer.parseInt(rs.getString("base_armor")), 
@@ -87,6 +97,7 @@ public class HeroDao {
 					Integer.parseInt(rs.getString("base_agi")), Integer.parseInt(rs.getString("base_int")), 
 					Float.parseFloat(rs.getString("gain_str")), Float.parseFloat(rs.getString("gain_agi")),
 					Float.parseFloat(rs.getString("gain_int")));
+			}
 			
 		}
 		catch (SQLException e) {

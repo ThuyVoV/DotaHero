@@ -80,8 +80,11 @@ public class AddHeroController extends HttpServlet {
 		
 		//calls the heroDAO to add the hero to the database
 		try {
-			heroDao.addHero(hero);
-			response.sendRedirect("successfulAddPage.jsp");
+			boolean success = heroDao.addHero(hero);
+			if(success)
+				response.sendRedirect("successfulAddPage.jsp");
+			else
+				response.sendRedirect("failureAddPage.jsp");
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
